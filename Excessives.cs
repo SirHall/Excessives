@@ -420,15 +420,9 @@ namespace Excessives
 
 		#region Boolean to Num
 
-		public static float ToFloat(this bool boolean)
-		{
-			return boolean ? 1f : 0f;
-		}
+		public static float ToFloat(this bool boolean) => boolean ? 1f : 0f;
 
-		public static int ToInt(this bool boolean)
-		{
-			return boolean ? 1 : 0;
-		}
+		public static int ToInt(this bool boolean) => boolean ? 1 : 0;
 
 		#endregion
 
@@ -442,9 +436,7 @@ namespace Excessives
 		/// <param name="val">Value.</param>
 		/// <param name="n">N.</param>
 		public static double RoundToN(double val, double n)
-		{
-			return n * Math.Round(val / n);
-		}
+			=> n * Math.Round(val / n);
 
 		/// <summary>
 		/// Rounds up to the nearest multiple of 'n'.
@@ -452,9 +444,7 @@ namespace Excessives
 		/// <param name="val">Value.</param>
 		/// <param name="n">N.</param>
 		public static double CeilToN(double val, double n)
-		{
-			return n * Math.Ceiling(val / n);
-		}
+			=> n * Math.Ceiling(val / n);
 
 		/// <summary>
 		/// Rounds down to the nearest multiple of 'n'.
@@ -462,9 +452,7 @@ namespace Excessives
 		/// <param name="val">Value.</param>
 		/// <param name="n">N.</param>
 		public static double FloorToN(double val, double n)
-		{
-			return n * Math.Floor(val / n);
-		}
+			=> n * Math.Floor(val / n);
 
 		#endregion
 
@@ -472,19 +460,14 @@ namespace Excessives
 
 		//{TODO} Rewrite these so they don't cast to double
 		public static float Round(float val)
-		{
-			return (float)Math.Round((double)val);
-		}
+			=> (float)Math.Round((double)val);
 
 		public static float Floor(float val)
-		{
-			return (float)Math.Floor((double)val);
-		}
+			=> (float)Math.Floor((double)val);
 
 		public static float Ceil(float val)
-		{
-			return (float)Math.Ceiling((double)(val));
-		}
+			=> (float)Math.Ceiling((double)(val));
+		
 
 
 		/// <summary>
@@ -493,9 +476,7 @@ namespace Excessives
 		/// <param name="val">Value.</param>
 		/// <param name="n">N.</param>
 		public static float RoundToN(float val, float n)
-		{
-			return n * Round(val / n);
-		}
+			=> n * Round(val / n);
 
 		/// <summary>
 		/// Rounds up to the nearest multiple of 'n'.
@@ -503,9 +484,7 @@ namespace Excessives
 		/// <param name="val">Value.</param>
 		/// <param name="n">N.</param>
 		public static float CeilToN(float val, float n)
-		{
-			return n * Ceil(val / n);
-		}
+			=> n * Ceil(val / n);
 
 		/// <summary>
 		/// Rounds down to the nearest multiple of 'n'.
@@ -513,9 +492,7 @@ namespace Excessives
 		/// <param name="val">Value.</param>
 		/// <param name="n">N.</param>
 		public static float FloorToN(float val, float n)
-		{
-			return n * Floor(val / n);
-		}
+			=> n * Floor(val / n);
 
 		#endregion
 
@@ -529,26 +506,20 @@ namespace Excessives
 		/// Lerp
 		/// </summary>
 		public static double Lerp(double a, double b, double t)
-		{
-			return ((b - a) * t) + a;
-		}
+			=> ((b - a) * t) + a;
 
 
 		/// <summary>
 		/// Quadratic Lerp
 		/// </summary>
 		public static double QuadLerp(double a, double b, double t)
-		{
-			return ((b - a) * t * t) + a;
-		}
+			=> ((b - a) * t * t) + a;
 
 		/// <summary>
 		/// A Sine Lerp
 		/// </summary>
 		public static double SineLerp(double a, double b, double t)
-		{
-			return ((b - a) * Math.Sin(t * Math.PI / 2)) + a;
-		}
+			=> ((b - a) * Math.Sin(t * Math.PI / 2)) + a;
 
 		//Finds the 't' used to lerp between two numbers
 		public static double UnLerp(double a, double b, double lerped)
@@ -556,7 +527,6 @@ namespace Excessives
 			//Lerp function: lerped = ((b-a) * t) + a
 			//Solve for t
 			//t = (lerped - a) / (b - a)
-
 			return (lerped - a) / (b - a);
 		}
 

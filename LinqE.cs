@@ -21,9 +21,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = 0; i < enumerable.Count(); i++)
-			{
 				action(enumerable.ElementAt(i));
-			}
 			return enumerable;
 		}
 
@@ -34,9 +32,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = 0; i < enumerable.Count(); i++)
-			{
 				action(enumerable.ElementAt(i), i);
-			}
 			return enumerable;
 		}
 
@@ -47,9 +43,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = 0; i < enumerable.Count(); i++)
-			{
 				enumerable.ToArray()[i] = action(enumerable.ElementAt(i));
-			}
 			return enumerable.AsEnumerable();
 		}
 
@@ -60,9 +54,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = 0; i < enumerable.Count(); i++)
-			{
 				enumerable.ToArray()[i] = action(enumerable.ElementAt(i), i);
-			}
 			return enumerable.AsEnumerable();
 		}
 
@@ -77,9 +69,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = enumerable.Count() - 1; i >= 0; i--)
-			{
 				action(enumerable.ElementAt(i));
-			}
 			return enumerable;
 		}
 
@@ -90,9 +80,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = enumerable.Count() - 1; i >= 0; i--)
-			{
 				action(enumerable.ElementAt(i), i);
-			}
 			return enumerable;
 		}
 
@@ -103,9 +91,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = enumerable.Count() - 1; i >= 0; i--)
-			{
 				enumerable.ToArray()[i] = action(enumerable.ElementAt(i));
-			}
 			return enumerable.AsEnumerable();
 		}
 
@@ -116,9 +102,7 @@ namespace Excessives.LinqE
 		)
 		{
 			for (int i = enumerable.Count() - 1; i >= 0; i--)
-			{
 				enumerable.ToArray()[i] = action(enumerable.ElementAt(i), i);
-			}
 			return enumerable.AsEnumerable();
 		}
 

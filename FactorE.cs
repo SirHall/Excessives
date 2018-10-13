@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
+//{TODO} Do we really need this class?
 namespace Excessives
 {
 	//Is meant to be a factory, where you don't pass a string, but rather the type
