@@ -10,6 +10,7 @@ namespace Excessives.LinqE {
      */
 
 	public static class LinqE {
+
 		#region Loops
 
 		//Foreach, no return
@@ -50,6 +51,30 @@ namespace Excessives.LinqE {
 			for (int i = 0; i < enumerable.Count(); i++)
 				enumerable.ToArray()[i] = action(enumerable.ElementAt(i), i);
 			return enumerable.AsEnumerable();
+		}
+
+		public static IEnumerable<TSource> Combination<TSource>(
+			this IEnumerable<TSource> enumerable,
+			Action<TSource, TSource> action
+			) {
+			for (int i = 0; i < enumerable.Count(); i++)
+				for (int j = i + 1; j < enumerable.Count(); j++)
+					action(enumerable.ElementAt(i), enumerable.ElementAt(j));
+			return enumerable;
+		}
+
+		public static IEnumerable<TSource> Permuation<TSource>(
+			this IEnumerable<TSource> enumerable,
+			Action<TSource, TSource> action
+			) {
+			var enumerator1 = enumerable.GetEnumerator();
+			var enumerator2 = enumerable.GetEnumerator();
+
+			while (enumerator1.MoveNext())
+				while (enumerator2.MoveNext())
+					action(enumerator1.Current, enumerator2.Current);
+
+			return enumerable;
 		}
 
 		#endregion
