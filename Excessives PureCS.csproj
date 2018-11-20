@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
+    <ProjectGuid>{A4B8637C-C8C7-40B2-BF2B-AE1C2D272532}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>ConsoleApplication</AssemblyName>
@@ -29,6 +29,9 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Excessives_PureCS</RootNamespace>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -37,6 +40,74 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitString.cs" />
+    <Compile Include="BitWisE.cs" />
+    <Compile Include="Excessives.cs" />
+    <Compile Include="FactorE.cs" />
+    <Compile Include="LinqE.cs" />
+    <Compile Include="ReflectionE.cs" />
+    <Compile Include="Tester.cs" />
+    <Compile Include="ZciencE.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\master" />
+    <None Include=".git\logs\refs\remotes\origin\HEAD" />
+    <None Include=".git\objects\0e\b9cc71fd094e7ffaccff51cbfc62e6a49659b6" />
+    <None Include=".git\objects\10\e016cfd1d1f88d339a2fbf4dc32ba53851eda1" />
+    <None Include=".git\objects\1f\06c17225e4cd76be4b2793fe04f7faa4cfadc9" />
+    <None Include=".git\objects\21\0ed0ee758e66349f3406eccd416249e6f36b57" />
+    <None Include=".git\objects\2c\42d7abf873d3fd49a9bc35bb4041dc17c43dd4" />
+    <None Include=".git\objects\36\a3242ea12093112d8ec8945fecb05ada4d3c99" />
+    <None Include=".git\objects\3e\759b75bf455ac809d0987d369aab89137b5689" />
+    <None Include=".git\objects\4c\1cd9c551eae0c9c326db80ce38600a53be9401" />
+    <None Include=".git\objects\5f\6205c46ba2563da511251bc5b5854956fe9522" />
+    <None Include=".git\objects\63\681b563472a5e6403235ddfbd077b910e2699c" />
+    <None Include=".git\objects\67\2128e2e5f797372e9746a8294366772710f01b" />
+    <None Include=".git\objects\69\ad518750c1e7292f384305a08c2844c73eb10e" />
+    <None Include=".git\objects\9e\5560677313b0074261438026bed2cd9c6229a8" />
+    <None Include=".git\objects\a1\12f1a71515f0fcccafdb8790ea06e4ce13d483" />
+    <None Include=".git\objects\ca\b7092f9bfd52f3e51945c69b0a1b04962cdd6d" />
+    <None Include=".git\objects\cb\1ecb72a69971349504c4d287209cfbbf5d4bd7" />
+    <None Include=".git\objects\cf\1ab25da0349f84a3fdd40032f0ce99db813b8b" />
+    <None Include=".git\objects\d6\0dc64c98e1aaa3e170e72bf4fecb7a5666994b" />
+    <None Include=".git\objects\d9\474ce7d216bd00a8385579418ce9a6d3238c7e" />
+    <None Include=".git\objects\e0\5608ccd79eabe2d02558eec33c6eaa37ca6dbc" />
+    <None Include=".git\objects\e1\540a37d9780fe4112249a8ddbbbf65e05f429e" />
+    <None Include=".git\objects\e2\14bd4ce9b8b0a94b3319e38f8e2abd94d2a377" />
+    <None Include=".git\objects\e8\39e00b122dd95bb84e9178b901cb56f7a201e3" />
+    <None Include=".git\objects\fb\c709e24eb19a75c081322dbc1dd2926543901f" />
+    <None Include=".git\packed-refs" />
+    <None Include=".git\refs\heads\master" />
+    <None Include=".git\refs\remotes\origin\HEAD" />
+    <None Include="Excessives-workspace.code-workspace" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

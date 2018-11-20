@@ -272,7 +272,7 @@ namespace Excessives.LinqE {
 			TSource tmp;
 			tmp = array[index1];
 			array[index1] = array[index2];
-			array[index2] = array[index1];
+			array[index2] = tmp;
 
 			return array.AsEnumerable(); //Yuck! V2.0
 		}
@@ -307,16 +307,18 @@ namespace Excessives.LinqE {
 			return CryptoRand.Pick(enumerable.ToArray());
 		}
 
+
 		public static IEnumerable<TSource> Shuffle<TSource>(
 			this IEnumerable<TSource> enumerable
 			) {
-			TSource[] newArray = new TSource[enumerable.Count()];
+			//TSource[] newArray = new TSource[enumerable.Count()];
 
-			for (int i = 0; i < newArray.Length; i++)
-				newArray[i] =
-					enumerable.Where(n => !newArray.Contains(n))
-					.Pick();
-			return newArray.AsEnumerable();
+			for (int i = 0; i < enumerable.Count(); i++)
+				enumerable = enumerable.Swap(i, (int)CryptoRand.Range(0.0, (double)enumerable.Count()));
+
+			//for (int i = 0; i < newArray.Length; i++)
+			//	newArray[i] = enumerable.Where(n => !newArray.Contains(n)).Pick(); //Kinda slow?
+			return enumerable;
 		}
 
 		#endregion

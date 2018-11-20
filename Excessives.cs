@@ -3,6 +3,7 @@ using Excessives.LinqE;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Collections.Generic;
+using Excessives.BitWisE;
 
 namespace Excessives {
 	static class MathE {
@@ -639,6 +640,8 @@ namespace Excessives {
 		public static double Range() {
 			byte[] bytes = new Byte[8];
 			rng.GetBytes(bytes);
+			//Testing new way to generate random numbers
+			//double d = Math.Abs(bytes.DecDouble()) % 1.0;
 			var ul = BitConverter.ToUInt64(bytes, 0) / (1 << 11);
 			Double d = ul / (Double)(1UL << 53);
 			return d;
@@ -657,17 +660,15 @@ namespace Excessives {
 		/// </summary>
 		/// <param name="array">Array.</param>
 		/// <typeparam name="T">The type parameter.</typeparam>
-		public static T Pick<T>(params T[] array) {
-			return array[(int)(array.Length * Range())];
-		}
+		public static T Pick<T>(params T[] array)
+			=> array[(int)(array.Length * Range())];
 
 		/// <summary>
-		/// Has an n% chance of returning a true
+		/// Has an n probability of returning a true
 		/// </summary>
 		/// <returns></returns>
-		public static bool Chance(double n) {
-			return Range(0, 1) > n;
-		}
+		public static bool Chance(double n)
+			=> Range(0, 1) > n;
 
 	}
 
@@ -677,6 +678,7 @@ namespace Excessives {
 	/// use at own risk!
 	/// </summary>
 	public static class CryptoSymmetric {
+
 		public static byte[] Encrypt(byte[] data, byte[] key) {
 			return XORArrayWithKey(data, EqualizeKey(data, key));
 		}
@@ -746,10 +748,10 @@ namespace Excessives {
 
 			//Example
 			/* ForEach(myArray,
-             * (arrayElement) =>{
-             *      //Do something with arrayElement
-             * });
-             */
+			 * (arrayElement) =>{
+			 *      //Do something with arrayElement
+			 * });
+			 */
 		}
 
 		/// <summary>
@@ -832,6 +834,7 @@ namespace Excessives {
 	}
 
 	static class ExtensionsE {
+
 		#region Conditions
 
 		public static bool IsNull<T>(this T instance) {
@@ -988,7 +991,6 @@ namespace Excessives {
 		public Ref(T value) {
 			this.val = value;
 		}
-
 
 		public virtual T Value {
 			get { return val; }
