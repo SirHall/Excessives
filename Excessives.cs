@@ -4,10 +4,8 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Collections.Generic;
 
-namespace Excessives
-{
-	static class MathE
-	{
+namespace Excessives {
+	static class MathE {
 		#region Constants
 
 		public const double GOLDENRATIO = 1.6180339887498948482;
@@ -42,8 +40,7 @@ namespace Excessives
 
 		#region Clamp
 
-		public static T Clamp<T>(T value, T max, T min) where T : System.IComparable<T>
-		{
+		public static T Clamp<T>(T value, T max, T min) where T : System.IComparable<T> {
 			return value.CompareTo(max) > 0 ?
 				max : value.CompareTo(min) < 0 ?
 				min : value;
@@ -56,8 +53,7 @@ namespace Excessives
 		#region Overflow
 
 		public static float AddTowardsOverFlow(
-			float value1, float value2, float target)
-		{
+			float value1, float value2, float target) {
 			return value1 + (value2 * Math.Sign(target - value1));
 		}
 
@@ -66,8 +62,7 @@ namespace Excessives
 		#region Obstructed
 
 		public static float AddTowardsObstructed(
-			float value1, float value2, float target)
-		{
+			float value1, float value2, float target) {
 			float v = value1 + (value2 * Math.Sign(target - value1));
 
 			return
@@ -100,8 +95,7 @@ namespace Excessives
 		}
 
 		public static int AddTowardsObstructed(
-			int value1, int value2, int target)
-		{
+			int value1, int value2, int target) {
 			int v = value1 + (value2 * Math.Sign(target - value1));
 
 			return
@@ -134,8 +128,7 @@ namespace Excessives
 		}
 
 		public static double AddTowardsObstructed(
-			double value1, double value2, double target)
-		{
+			double value1, double value2, double target) {
 			double v = value1 + (value2 * Math.Sign(target - value1));
 
 			return
@@ -172,8 +165,7 @@ namespace Excessives
 		#region Rebound
 
 		public static float AddTowardsRebound(
-			float value1, float value2, float target)
-		{
+			float value1, float value2, float target) {
 			float v = value1 + (value2 * Math.Sign(target - value1));
 
 			float offcut = Math.Abs(v - value1);
@@ -208,8 +200,7 @@ namespace Excessives
 		}
 
 		public static int AddTowardsRebound(
-			int value1, int value2, int target)
-		{
+			int value1, int value2, int target) {
 			int v = value1 + (value2 * Math.Sign(target - value1));
 
 			int offcut = Math.Abs(v - value1);
@@ -244,8 +235,7 @@ namespace Excessives
 		}
 
 		public static double AddTowardsRebound(
-			double value1, double value2, double target)
-		{
+			double value1, double value2, double target) {
 			double v = value1 + (value2 * Math.Sign(target - value1));
 
 			double offcut = Math.Abs(v - value1);
@@ -297,8 +287,7 @@ namespace Excessives
 		//	return value;
 		//}
 
-		public static float ClampWrap(float value, float min, float max)
-		{
+		public static float ClampWrap(float value, float min, float max) {
 			value = ((value - min) % (max - min)) + min;
 
 			if (value < min)
@@ -307,8 +296,7 @@ namespace Excessives
 			return value;
 		}
 
-		public static double ClampWrap(double value, double min, double max)
-		{
+		public static double ClampWrap(double value, double min, double max) {
 			value = ((value - min) % (max - min)) + min;
 
 			if (value < min)
@@ -317,8 +305,7 @@ namespace Excessives
 			return value;
 		}
 
-		public static int ClampWrap(int value, int min, int max)
-		{
+		public static int ClampWrap(int value, int min, int max) {
 			value = ((value - min) % (max - min)) + min;
 
 			if (value < min)
@@ -335,8 +322,7 @@ namespace Excessives
 			float value,
 			float inMin, float inMax,
 			float outMin, float outMax
-			)
-		{
+			) {
 			return
 				(value - inMin) / (outMin - inMin) * (outMax - inMax) + inMax;
 		}
@@ -345,8 +331,7 @@ namespace Excessives
 			double value,
 			double inMin, double inMax,
 			double outMin, double outMax
-			)
-		{
+			) {
 			return
 				(value - inMin) / (outMin - inMin) * (outMax - inMax) + inMax;
 		}
@@ -356,8 +341,7 @@ namespace Excessives
 			float inMin, float inMax,
 			float outMin, float outMax,
 			bool clampIn = true, bool clampOut = true
-			)
-		{
+			) {
 			return
 				MathE.Clamp(
 					ReMap(
@@ -378,8 +362,7 @@ namespace Excessives
 			double inMin, double inMax,
 			double outMin, double outMax,
 			bool clampIn = true, bool clampOut = true
-			)
-		{
+			) {
 			return
 				MathE.Clamp(
 					ReMap(
@@ -403,8 +386,7 @@ namespace Excessives
 		public static double PosFromDerivatives(
 			double velocity, double acceleration,
 			double jerk, double jounce,
-			double time)
-		{
+			double time) {
 			return //This is why I love the order of operations
 				velocity * time
 			+
@@ -467,7 +449,7 @@ namespace Excessives
 
 		public static float Ceil(float val)
 			=> (float)Math.Ceiling((double)(val));
-		
+
 
 
 		/// <summary>
@@ -522,16 +504,14 @@ namespace Excessives
 			=> ((b - a) * Math.Sin(t * Math.PI / 2)) + a;
 
 		//Finds the 't' used to lerp between two numbers
-		public static double UnLerp(double a, double b, double lerped)
-		{
+		public static double UnLerp(double a, double b, double lerped) {
 			//Lerp function: lerped = ((b-a) * t) + a
 			//Solve for t
 			//t = (lerped - a) / (b - a)
 			return (lerped - a) / (b - a);
 		}
 
-		public static double UnQuadLerp(double a, double b, double lerped)
-		{
+		public static double UnQuadLerp(double a, double b, double lerped) {
 			//Lerp function: lerped = ((b-a) * t * t) + a
 			//Solve for t
 			//t = Sqrt((lerped - a) / (b - a))
@@ -545,8 +525,7 @@ namespace Excessives
 		/// <summary>
 		/// Lerp
 		/// </summary>
-		public static float Lerp(float a, float b, float t)
-		{
+		public static float Lerp(float a, float b, float t) {
 			return ((b - a) * t) + a;
 		}
 
@@ -554,22 +533,19 @@ namespace Excessives
 		/// <summary>
 		/// Quadratic Lerp
 		/// </summary>
-		public static float QuadLerp(float a, float b, float t)
-		{
+		public static float QuadLerp(float a, float b, float t) {
 			return ((b - a) * t * t) + a;
 		}
 
 		/// <summary>
 		/// A Sine Lerp
 		/// </summary>
-		public static float SineLerp(float a, float b, float t)
-		{
+		public static float SineLerp(float a, float b, float t) {
 			return ((b - a) * (float)Math.Sin((double)(t * Math.PI / 2))) + a;
 		}
 
 		//Finds the 't' used to lerp between two numbers
-		public static float UnLerp(float a, float b, float lerped)
-		{
+		public static float UnLerp(float a, float b, float lerped) {
 			//Lerp function: lerped = ((b-a) * t) + a
 			//Solve for t
 			//t = (lerped - a) / (b - a)
@@ -577,8 +553,7 @@ namespace Excessives
 			return (lerped - a) / (b - a);
 		}
 
-		public static float UnQuadLerp(float a, float b, float lerped)
-		{
+		public static float UnQuadLerp(float a, float b, float lerped) {
 			//Lerp function: lerped = ((b-a) * t * t) + a
 			//Solve for t
 			//t = Sqrt((lerped - a) / (b - a))
@@ -605,8 +580,7 @@ namespace Excessives
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public static float ToDeg(this float v)
-		{
+		public static float ToDeg(this float v) {
 			return v * 180 / (float)Math.PI;
 		}
 		/// <summary>
@@ -614,8 +588,7 @@ namespace Excessives
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public static double ToDeg(this double v)
-		{
+		public static double ToDeg(this double v) {
 			return v * 180 / Math.PI;
 		}
 
@@ -624,8 +597,7 @@ namespace Excessives
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public static float ToRad(this float v)
-		{
+		public static float ToRad(this float v) {
 			return v * (float)Math.PI / 180;
 		}
 		/// <summary>
@@ -633,16 +605,14 @@ namespace Excessives
 		/// </summary>
 		/// <param name="v"></param>
 		/// <returns></returns>
-		public static double ToRad(this double v)
-		{
+		public static double ToRad(this double v) {
 			return v * Math.PI / 180;
 		}
 
 		#endregion
 	}
 
-	static class CryptoRand
-	{
+	static class CryptoRand {
 		static RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
 
 		/// <summary>
@@ -650,8 +620,7 @@ namespace Excessives
 		/// </summary>
 		/// <returns>The byte array.</returns>
 		/// <param name="byteCount">Length of byte array.</param>
-		public static byte[] GetBytes(int byteCount)
-		{
+		public static byte[] GetBytes(int byteCount) {
 			byte[] randBytes = new byte[byteCount];
 
 			rng.GetBytes(randBytes);
@@ -659,8 +628,7 @@ namespace Excessives
 			return randBytes;
 		}
 
-		public static byte[] GetBytes(byte[] byteArray)
-		{
+		public static byte[] GetBytes(byte[] byteArray) {
 			rng.GetBytes(byteArray);
 			return byteArray;
 		}
@@ -668,8 +636,7 @@ namespace Excessives
 		/// <summary>
 		/// Returns a random double from 0-1
 		/// </summary>
-		public static double Range()
-		{
+		public static double Range() {
 			byte[] bytes = new Byte[8];
 			rng.GetBytes(bytes);
 			var ul = BitConverter.ToUInt64(bytes, 0) / (1 << 11);
@@ -677,13 +644,11 @@ namespace Excessives
 			return d;
 		}
 
-		public static double Range(double min, double max)
-		{
+		public static double Range(double min, double max) {
 			return ((max - min) * Range()) + min;
 		}
 
-		public static float Range(float min, float max)
-		{
+		public static float Range(float min, float max) {
 			return ((max - min) * (float)Range()) + min;
 		}
 
@@ -692,8 +657,7 @@ namespace Excessives
 		/// </summary>
 		/// <param name="array">Array.</param>
 		/// <typeparam name="T">The type parameter.</typeparam>
-		public static T Pick<T>(params T[] array)
-		{
+		public static T Pick<T>(params T[] array) {
 			return array[(int)(array.Length * Range())];
 		}
 
@@ -701,8 +665,7 @@ namespace Excessives
 		/// Has an n% chance of returning a true
 		/// </summary>
 		/// <returns></returns>
-		public static bool Chance(double n)
-		{
+		public static bool Chance(double n) {
 			return Range(0, 1) > n;
 		}
 
@@ -713,37 +676,30 @@ namespace Excessives
 	/// NOTE: This is not a cryptographically secure method of encryption,
 	/// use at own risk!
 	/// </summary>
-	public static class CryptoSymmetric
-	{
-		public static byte[] Encrypt(byte[] data, byte[] key)
-		{
+	public static class CryptoSymmetric {
+		public static byte[] Encrypt(byte[] data, byte[] key) {
 			return XORArrayWithKey(data, EqualizeKey(data, key));
 		}
 
-		public static byte[] Decrypt(byte[] data, byte[] key)
-		{
+		public static byte[] Decrypt(byte[] data, byte[] key) {
 			return Encrypt(data, key);
 		}
 
-		static byte[] EqualizeKey(byte[] data, byte[] key)
-		{
+		static byte[] EqualizeKey(byte[] data, byte[] key) {
 			//We need to repeat the key
-			if (key.LongLength < data.LongLength)
-			{
+			if (key.LongLength < data.LongLength) {
 				long keyOriginalLength = key.LongLength;
 
 				byte[] dest = new byte[data.Length];
 
-				for (int i = 0; i < dest.Length; i++)
-				{
+				for (int i = 0; i < dest.Length; i++) {
 					dest[i] = key[i % keyOriginalLength];
 				}
 				return dest;
 			}
 
 			//We need to cut the key down
-			if (key.LongLength > data.LongLength)
-			{
+			if (key.LongLength > data.LongLength) {
 				byte[] dest = new byte[data.LongLength];
 				Array.Copy(key, 0, dest, 0, data.Length);
 				return dest;
@@ -752,12 +708,10 @@ namespace Excessives
 			return key;
 		}
 
-		static byte[] XORArrayWithKey(byte[] input, byte[] key)
-		{
+		static byte[] XORArrayWithKey(byte[] input, byte[] key) {
 			byte[] XORd = new byte[input.LongLength];
 
-			for (long i = 0; i < key.LongLength; i++)
-			{
+			for (long i = 0; i < key.LongLength; i++) {
 				XORd[i] = (byte)(input[i] ^ key[i]);
 			}
 
@@ -765,22 +719,18 @@ namespace Excessives
 		}
 	}
 
-	static class StatementsE
-	{
+	static class StatementsE {
 		/// <summary>
 		/// Simply loops a given number of times
 		/// </summary>
 		/// <param name="cycles"></param>
 		/// <param name="action"></param>
-		public static void Repeat(ulong cycles, Action action)
-		{
-			if (cycles == 0)
-			{
+		public static void Repeat(ulong cycles, Action action) {
+			if (cycles == 0) {
 				return;
 			}
 
-			for (ulong i = 0; i < cycles; i++)
-			{
+			for (ulong i = 0; i < cycles; i++) {
 				action();
 			}
 		}
@@ -789,10 +739,8 @@ namespace Excessives
 		/// A 'foreach' with a 'for' backbone
 		/// Look at source for example
 		/// </summary>
-		public static void ForEach<T>(T[] objects, Action<T> action)
-		{
-			for (int i = 0; i < objects.Length; i++)
-			{
+		public static void ForEach<T>(T[] objects, Action<T> action) {
+			for (int i = 0; i < objects.Length; i++) {
 				action(objects[i]);
 			}
 
@@ -807,8 +755,7 @@ namespace Excessives
 		/// <summary>
 		/// Times how long the action took to complete and returns that time in milliseconds.
 		/// </summary>
-		public static long SpeedTest(Action action)
-		{
+		public static long SpeedTest(Action action) {
 			Stopwatch watch = Stopwatch.StartNew();
 			action();
 			watch.Stop();
@@ -818,8 +765,7 @@ namespace Excessives
 		/// <summary>
 		/// Times how long the action took to complete and returns that time in milliseconds.
 		/// </summary>
-		public static long PerfTestInvoke(this Action action)
-		{
+		public static long PerfTestInvoke(this Action action) {
 			Stopwatch watch = Stopwatch.StartNew();
 			action();
 			watch.Stop();
@@ -830,22 +776,20 @@ namespace Excessives
 			bool condition1, bool condition2,
 			Action only1, Action only2,
 			Action both = null, Action neither = null
-			)
-		{
-			if (condition1 && !condition2)
+			) {
+			if (condition1 && !condition2 && only1 != null)
 				only1();
-			if (!condition1 && condition2)
+			if (!condition1 && condition2 && only2 != null)
 				only2();
-			if (condition1 && condition2)
+			if (condition1 && condition2 && both != null)
 				both();
-			if (!condition1 && !condition2)
+			if (!condition1 && !condition2 && neither != null)
 				neither();
 		}
 
 	}
 
-	public class PID
-	{
+	public class PID {
 		public double kP { get; set; }
 
 		public double kI { get; set; }
@@ -858,15 +802,13 @@ namespace Excessives
 
 		public double D { get; set; }
 
-		public PID(double kP, double kI, double kD)
-		{
+		public PID(double kP, double kI, double kD) {
 			this.kP = kP;
 			this.kI = kI;
 			this.kD = kD;
 		}
 
-		public double Step(double error)
-		{
+		public double Step(double error) {
 			I += error; //Integral
 			D = P - error; //Derivative
 			P = error; //Proportional
@@ -877,8 +819,7 @@ namespace Excessives
 
 	}
 
-	public static class ColorHex
-	{
+	public static class ColorHex {
 		public static string
 			Aqua = "#00ffffff", Black = "#000000ff", Brown = "#a52a2aff",
 			DarkBlue = "#0000a0ff", Magenta = "#ff00ffff", Green = "#008000ff",
@@ -890,25 +831,20 @@ namespace Excessives
 
 	}
 
-	static class ExtensionsE
-	{
+	static class ExtensionsE {
 		#region Conditions
 
-		public static bool IsNull<T>(this T instance)
-		{
+		public static bool IsNull<T>(this T instance) {
 			return instance == null;
 		}
 
-		public static bool NotNull<T>(this T instance)
-		{
+		public static bool NotNull<T>(this T instance) {
 			return instance != null;
 		}
 
 
-		public static bool IsNull<T>(this T instance, Action<T> actionIfNull)
-		{
-			if (instance == null)
-			{
+		public static bool IsNull<T>(this T instance, Action<T> actionIfNull) {
+			if (instance == null) {
 				if (actionIfNull != null)
 					actionIfNull(instance);
 				return true;
@@ -916,10 +852,8 @@ namespace Excessives
 			return false;
 		}
 
-		public static bool NotNull<T>(this T instance, Action<T> actionIfNotNull)
-		{
-			if (instance != null)
-			{
+		public static bool NotNull<T>(this T instance, Action<T> actionIfNotNull) {
+			if (instance != null) {
 				if (actionIfNotNull != null)
 					actionIfNotNull(instance);
 				return true;
@@ -935,10 +869,8 @@ namespace Excessives
 		/// Invokes the action if it isn't null, if it is null then just ignores it.
 		/// </summary>
 		/// <param name="action">Action.</param>
-		public static void InvokeNull(this Action action)
-		{
-			if (action != null)
-			{
+		public static void InvokeNull(this Action action) {
+			if (action != null) {
 				action();
 			}
 		}
@@ -948,15 +880,11 @@ namespace Excessives
 		/// </summary>
 		/// <param name="action">Action.</param>
 		/// <param name="ifNull">If null.</param>
-		public static void InvokeNull(this Action action, Action ifNull)
-		{
-			if (action == null)
-			{
+		public static void InvokeNull(this Action action, Action ifNull) {
+			if (action == null) {
 				ifNull();
 				return;
-			}
-			else
-			{
+			} else {
 				action();
 			}
 		}
@@ -967,12 +895,10 @@ namespace Excessives
 
 		#region Console
 
-		public static void Write<T>(this T message)
-		{
+		public static void Write<T>(this T message) {
 			Console.Write(message);
 		}
-		public static void WriteLine<T>(this T message)
-		{
+		public static void WriteLine<T>(this T message) {
 			Console.WriteLine(message);
 		}
 		#endregion
@@ -983,16 +909,13 @@ namespace Excessives
 
 		public static string ToElementsString<TSource>(
 	   this IEnumerable<TSource> enumerable,
-	   string splitter = ", ")
-		{
+	   string splitter = ", ") {
 			string str = "";
 
-			using (var enumerator = enumerable.GetEnumerator())
-			{
+			using (var enumerator = enumerable.GetEnumerator()) {
 				bool putFirst = false;
 
-				while (enumerator.MoveNext())
-				{
+				while (enumerator.MoveNext()) {
 					str +=
 						(putFirst ? splitter : "") + //If I already put the first index, add in the splitter
 						enumerator.Current.ToString();
@@ -1006,15 +929,13 @@ namespace Excessives
 
 		public static void WriteArrayElements<TSource>(
 	   this IEnumerable<TSource> enumerable,
-	   string splitter = ", ")
-		{
+	   string splitter = ", ") {
 			Console.Write(ToElementsString(enumerable, splitter));
 		}
 
 		public static void WriteLineArrayElements<TSource>(
 	   this IEnumerable<TSource> enumerable,
-	   string splitter = ", ")
-		{
+	   string splitter = ", ") {
 			WriteArrayElements(enumerable, splitter);
 		}
 
@@ -1025,14 +946,12 @@ namespace Excessives
 		public static string ToElementsString<TSource1, TSource2>(
 			this Dictionary<TSource1, TSource2> dict,
 			string keyValueSeparator = " => ",
-			string elementSeparator = "\n")
-		{
+			string elementSeparator = "\n") {
 			string returnString = "";
 
 			var dictEnumerator = dict.GetEnumerator();
 
-			while (dictEnumerator.MoveNext())
-			{
+			while (dictEnumerator.MoveNext()) {
 				returnString +=
 					elementSeparator +
 					dictEnumerator.Current.Key.ToString() +
@@ -1049,8 +968,7 @@ namespace Excessives
 		public static void WriteElements<TSource1, TSource2>(
 			this Dictionary<TSource1, TSource2> dict,
 			string keyValueSeparator = " => ",
-			string elementSeparator = "\n")
-		{
+			string elementSeparator = "\n") {
 			ToElementsString(dict, keyValueSeparator, elementSeparator)
 				.WriteLine();
 		}
@@ -1063,19 +981,16 @@ namespace Excessives
 	/// Used to store a variable type as a reference type.
 	/// Or for some interesting scoping tricks ;)
 	/// </summary>
-	public class Ref<T>
-	{
+	public class Ref<T> {
 
 		T val;
 
-		public Ref(T value)
-		{
+		public Ref(T value) {
 			this.val = value;
 		}
 
 
-		public virtual T Value
-		{
+		public virtual T Value {
 			get { return val; }
 			set { val = value; }
 		}
@@ -1085,8 +1000,7 @@ namespace Excessives
 	/// Can be used to setup a getter and setter of an external
 	/// instance of a given object
 	/// </summary>
-	public class GetSet<T>
-	{
+	public class GetSet<T> {
 		Func<T> getter;
 		Action<T> setter;
 
@@ -1094,14 +1008,12 @@ namespace Excessives
 			(
 			Func<T> getter,
 			Action<T> setter
-			)
-		{
+			) {
 			this.getter = getter;
 			this.setter = setter;
 		}
 
-		public T value
-		{
+		public T value {
 			get { return getter(); }
 			set { setter(value); }
 		}
