@@ -49,9 +49,11 @@
     <Compile Include="BitWisE.cs" />
     <Compile Include="Excessives.cs" />
     <Compile Include="FactorE.cs" />
+    <Compile Include="GlobalEvent.cs" />
     <Compile Include="LinqE.cs" />
     <Compile Include="ReflectionE.cs" />
     <Compile Include="Tester.cs" />
+    <Compile Include="WriteInto.cs" />
     <Compile Include="ZciencE.cs" />
   </ItemGroup>
   <ItemGroup>
