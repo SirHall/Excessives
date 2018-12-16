@@ -177,7 +177,7 @@ namespace Excessives.LinqE {
 		public static TSource Minimum<TSource>(
 			this IEnumerable<TSource> enumerable,
 			Func<TSource, IComparable> selector
-			) where TSource : IComparable<TSource> {
+			) {
 			TSource minimum = default(TSource);
 
 			bool assignedMinimum = false; //Used so we don't have to use a 'default' value
@@ -197,7 +197,7 @@ namespace Excessives.LinqE {
 		public static TSource Maximum<TSource>(
 			this IEnumerable<TSource> enumerable,
 			Func<TSource, IComparable> selector
-			) where TSource : IComparable<TSource> {
+			) {
 			TSource maximum = default(TSource);
 
 			bool assignedMaximum = false; //Used so we don't have to use a 'default' value
