@@ -5,14 +5,6 @@
 //How to at bottom
 
 public class GlobalEvent<T> where T : GlobalEvent<T>, IDisposable, new() {
-
-	/*
-	 * The base Event,
-	 * might have some generic text
-	 * for doing Debug.Log?
-	 */
-	public string Description;
-
 	static T instance = new T();
 
 	public static T Get() {
@@ -44,7 +36,10 @@ public class GlobalEvent<T> where T : GlobalEvent<T>, IDisposable, new() {
 		if (listeners != null)
 			listeners(this as T);
 		inUse = false;
+		Reset(); //{TODO} Push this back into the master for Excessives
 	}
+
+	protected virtual void Reset() { }
 
 	#region IDisposable Implementation
 
