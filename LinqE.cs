@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System;
-
+using System.Collections;
 
 namespace Excessives.LinqE {
 	/* {TODO}
@@ -18,8 +18,9 @@ namespace Excessives.LinqE {
 			this IEnumerable<TSource> enumerable,
 			Action<TSource> action
 		) {
-			for (int i = 0; i < enumerable.Count(); i++)
-				action(enumerable.ElementAt(i));
+			using (var enumerator = enumerable.GetEnumerator())
+				while (enumerator.MoveNext())
+					action(enumerator.Current);
 			return enumerable;
 		}
 
@@ -28,29 +29,13 @@ namespace Excessives.LinqE {
 			this IEnumerable<TSource> enumerable,
 			Action<TSource, int> action
 		) {
-			for (int i = 0; i < enumerable.Count(); i++)
-				action(enumerable.ElementAt(i), i);
+			int i = 0;
+			using (var enumerator = enumerable.GetEnumerator())
+				while (enumerator.MoveNext()) {
+					action(enumerator.Current, i);
+					i++;
+				}
 			return enumerable;
-		}
-
-		//Foreach, return
-		public static IEnumerable<TSource> ForEachR<TSource>(
-			this IEnumerable<TSource> enumerable,
-			Func<TSource, TSource> action
-		) {
-			for (int i = 0; i < enumerable.Count(); i++)
-				enumerable.ToArray()[i] = action(enumerable.ElementAt(i));
-			return enumerable.AsEnumerable();
-		}
-
-		//For, return
-		public static IEnumerable<TSource> ForR<TSource>(
-			this IEnumerable<TSource> enumerable,
-			Func<TSource, int, TSource> action
-		) {
-			for (int i = 0; i < enumerable.Count(); i++)
-				enumerable.ToArray()[i] = action(enumerable.ElementAt(i), i);
-			return enumerable.AsEnumerable();
 		}
 
 		public static IEnumerable<TSource> Combination<TSource>(
@@ -99,26 +84,6 @@ namespace Excessives.LinqE {
 			for (int i = enumerable.Count() - 1; i >= 0; i--)
 				action(enumerable.ElementAt(i), i);
 			return enumerable;
-		}
-
-		//Foreach, return
-		public static IEnumerable<TSource> ForEachBack<TSource>(
-			this IEnumerable<TSource> enumerable,
-			Func<TSource, TSource> action
-		) {
-			for (int i = enumerable.Count() - 1; i >= 0; i--)
-				enumerable.ToArray()[i] = action(enumerable.ElementAt(i));
-			return enumerable.AsEnumerable();
-		}
-
-		//For, return
-		public static IEnumerable<TSource> ForBack<TSource>(
-			this IEnumerable<TSource> enumerable,
-			Func<TSource, int, TSource> action
-		) {
-			for (int i = enumerable.Count() - 1; i >= 0; i--)
-				enumerable.ToArray()[i] = action(enumerable.ElementAt(i), i);
-			return enumerable.AsEnumerable();
 		}
 
 		#endregion
