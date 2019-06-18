@@ -822,7 +822,7 @@ namespace Excessives {
 	}
 
 	public static class ColorHex {
-		public static string
+		public static readonly string
 			Aqua = "#00ffffff", Black = "#000000ff", Brown = "#a52a2aff",
 			DarkBlue = "#0000a0ff", Magenta = "#ff00ffff", Green = "#008000ff",
 			Grey = "#808080ff", LightBlue = "#add8e6ff", Lime = "#00ff00ff",
