@@ -41,4 +41,7 @@ This library also adds many other useful things that assist in all projects:<br/
 
 **Usage**<br/>
 To use just add this project to your own as a git submodule or just download the project in a zip file and unzip it into your project's source directory.<br/>
+
 To learn more about how to use this library check out the wiki.
+
+Unity3D devs are advised to use the [Unity Excessives](https://github.com/SirHall/UnityExcessives) library as it has extra functionality just for the Unity engine!
