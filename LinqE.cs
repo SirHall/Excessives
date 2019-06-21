@@ -4,10 +4,6 @@ using System;
 using System.Collections;
 
 namespace Excessives.LinqE {
-	/* {TODO}
-     * Fix indentations
-     * Comment obscure code (Fairly obvious)
-     */
 
 	public static class LinqE {
 
@@ -117,18 +113,12 @@ namespace Excessives.LinqE {
 			int currentIndex = startIndex;
 
 			for (int i = 0; i < cycles; i++) {
-				//{TODO} Allow this to handle negative indexes
 				currentIndex =
 					MathE.ClampWrap(
 						startIndex + (i * stepsize),
 						0,
 						enumerable.Count()
 						);
-
-				//(startIndex + (i * stepsize))
-				//%
-				//enumerable.Count(); //Allows our copies to wrap around the array
-
 				final[i] = enumerable.ElementAt(currentIndex);
 			}
 

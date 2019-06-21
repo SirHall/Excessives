@@ -3,6 +3,7 @@ using Excessives.LinqE;
 
 namespace Excessives.BitWisE {
 	static class BitWisE {
+
 		#region Bit Play
 
 		//Good for packing 8 bools (8 bytes) into 1
