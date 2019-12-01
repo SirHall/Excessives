@@ -1,3 +1,17 @@
+This branch adds compatibility with the [Unity Package Manager (UPM)](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html).
+## Install
+
+Find `Packages/manifest.json` in your project and edit it to look like this:
+```js
+{
+  "dependencies": {
+    "com.github.sir-hall.excessives": "https://github.com/SirHall/Excessives.git#upm",
+    ...
+  },
+}
+```
+or, you can use the [UPM Git Extension](https://github.com/mob-sakai/UpmGitExtension) instead (recommended).
+
 # C# Excessives Library<br/>
 
 **What is the C# Excessives library?**<br/>

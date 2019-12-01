@@ -1,0 +1,18 @@
+{
+  "name": "com.github.sir-hall.excessives",
+  "displayName": "C# Excessives Library",
+  "version": "1.0.0",
+  "unity": "2017.1",
+  "description": "The C# Excessives library is a utility library made to make your C# development life easier by giving you powerful tools that will make your code both shorter, and easier to read.",
+  "keywords": [
+    "C#",
+    "utility"
+  ],
+  "author": {
+    "name": "SirHall"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SirHall/Excessives.git"
+  }
+}
