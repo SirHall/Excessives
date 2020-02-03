@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Excessives.BitWisE;
 
 namespace Excessives {
-	static class MathE {
+	public static class MathE {
 		#region Constants
 
 		public const double GOLDENRATIO = 1.6180339887498948482;
@@ -613,7 +613,7 @@ namespace Excessives {
 		#endregion
 	}
 
-	static class CryptoRand {
+	public static class CryptoRand {
 		static RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
 
 		/// <summary>
@@ -721,7 +721,7 @@ namespace Excessives {
 		}
 	}
 
-	static class StatementsE {
+	public static class StatementsE {
 		/// <summary>
 		/// Simply loops a given number of times
 		/// </summary>
@@ -833,7 +833,7 @@ namespace Excessives {
 
 	}
 
-	static class ExtensionsE {
+	public static class ExtensionsE {
 
 		#region Conditions
 
