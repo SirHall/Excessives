@@ -1,17 +1,3 @@
-This branch adds compatibility with the [Unity Package Manager (UPM)](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html).
-## Install
-
-Find `Packages/manifest.json` in your project and edit it to look like this:
-```js
-{
-  "dependencies": {
-    "com.github.sir-hall.excessives": "https://github.com/SirHall/Excessives.git",
-    ...
-  },
-}
-```
-or, you can use the [UPM Git Extension](https://github.com/mob-sakai/UpmGitExtension) instead (recommended).
-
 # C# Excessives Library<br/>
 
 **What is the C# Excessives library?**<br/>
@@ -54,7 +40,21 @@ This library also adds many other useful things that assist in all projects:<br/
     -- `newArray = yourArray.SubArraySmart(startIndex, length, stepSize);`<br/>
 
 **Usage**<br/>
-To use just add this project to your own as a git submodule or just download the project in a zip file and unzip it into your project's source directory.<br/>
+
+This branch adds compatibility with the [Unity Package Manager (UPM)](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html).
+
+Find `Packages/manifest.json` in your project and edit it to look like this:
+```js
+{
+  "dependencies": {
+    "com.github.sir-hall.excessives": "https://github.com/SirHall/Excessives.git",
+    ...
+  },
+}
+```
+or, you can use the [UPM Git Extension](https://github.com/mob-sakai/UpmGitExtension) instead (recommended).
+
+As an alternative you may add this project to your own as a git submodule or just download the project in a zip file and unzip it into your project's source directory.<br/>
 
 To learn more about how to use this library check out the wiki.
 
