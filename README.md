@@ -5,7 +5,7 @@ Find `Packages/manifest.json` in your project and edit it to look like this:
 ```js
 {
   "dependencies": {
-    "com.github.sir-hall.excessives": "https://github.com/SirHall/Excessives.git#upm",
+    "com.github.sir-hall.excessives": "https://github.com/SirHall/Excessives.git",
     ...
   },
 }
