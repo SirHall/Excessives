@@ -139,7 +139,7 @@ namespace Excessives.LinqE {
 
 			enumerable.ForEach(
 				n => {
-					if (selector(n).CompareTo(selector(minimum)) < 0 || !assignedMinimum) {
+					if (!assignedMinimum || selector(n).CompareTo(selector(minimum)) < 0) {
 						minimum = n;
 						assignedMinimum = true;
 					}
@@ -159,7 +159,7 @@ namespace Excessives.LinqE {
 
 			enumerable.ForEach(
 				n => {
-					if (selector(n).CompareTo(selector(maximum)) > 0 || !assignedMaximum) {
+					if (!assignedMaximum || selector(n).CompareTo(selector(maximum)) > 0) {
 						maximum = n;
 						assignedMaximum = true;
 					}
